@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from "@angular/forms";
+import { HttpModule } from "@angular/http";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MdInputModule, MdButtonModule, MdCheckboxModule } from '@angular/material';
-
-import { HttpClientModule } from "@angular/common/http";
 
 import 'hammerjs';
 
@@ -19,13 +19,14 @@ import { LoginComponent } from "./auth/login.component";
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
+    HttpModule,
+    FormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     MdInputModule,
     MdButtonModule, MdCheckboxModule
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

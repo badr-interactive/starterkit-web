@@ -4,31 +4,49 @@
             <h3> {{title}} </h3>
         </div>
         <div class="box-content">
-            <form class="example-form">
-                <p>
-                    <md-input-container class="example-full-width">
-                        <input type="email" mdInput placeholder="Email">
-                    </md-input-container>
-                </p>
-                <p>
-                    <md-input-container class="example-full-width">
-                        <input type="password" mdInput placeholder="Password">
-                    </md-input-container>
-                </p>
-                <p>
+            <form (ngSubmit)="doLogin()" name="loginForm" #loginForm="ngForm">
+                <md-input-container class="example-full-width">
+                    <input type="email" 
+                    mdInput required 
+                    placeholder="Email" name="email" 
+                    #email="ngModel"
+                    [(ngModel)]="login.email" />
+                </md-input-container>
+                <div 
+                *ngIf="email.invalid"
+                class="alert alert-danger">
+                    <div *ngIf="email.errors.required">Email is required</div>
+                    <div *ngIf="email.errors.email">Email must be in valid email format</div>
+                </div>
+                <md-input-container class="example-full-width">
+                    <input type="password" 
+                    mdInput required 
+                    placeholder="Password" name="password" 
+                    #password="ngModel"
+                    [(ngModel)]="login.password" />
+                </md-input-container>
+                <div 
+                *ngIf="password.invalid"
+                class="alert alert-danger">
+                    <div *ngIf="password.errors.required">Password is required</div>
+                </div>
+                <div class="example-full-width">
                     <md-checkbox>
                         Remember me?
                     </md-checkbox>
-                    <button md-raised-button>
+                    <button md-raised-button type="submit">
                         Login
                     </button>
-                </p>
+                </div>
             </form>
             <br>
-            <p>
+            <div class="example-full-width">
                 Don't have account yet?
+                <br />
                 <a href="#">Register</a>
-            </p>
+                or 
+                <a href="#">Forgot password</a>
+            </div>
         </div>
     </div>
 </div>
