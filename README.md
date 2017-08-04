@@ -1,1 +1,1 @@
-starterkit-web
+Starterkit for web admin application built with SPA.
