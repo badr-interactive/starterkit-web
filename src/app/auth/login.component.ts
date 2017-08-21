@@ -1,18 +1,22 @@
-import { Component } from "@angular/core";
-import { LoginService } from "./login.service";
-import { Login } from "./login";
+import { Component, Input } from '@angular/core';
+import { LoginService } from './login.service';
+import { Login } from './login';
 
 @Component({
     selector: 'login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css', './login.reset.css'],
+    styleUrls: ['./login.component.css'],
     providers: [LoginService]
 })
 
 export class LoginComponent {
     public login: Login;
-    title = "Starterkit Login";
+    @Input() public alerts: Array<string> = [];
+    title = 'Starterkit Login';
+    alertClass = 'primary';
+    alert: String;
     errorMessage: String;
+
     constructor (private loginService: LoginService) {
         this.login = new Login();
     }
@@ -20,8 +24,13 @@ export class LoginComponent {
     doLogin(): void {
         this.loginService.postLogin(this.login)
             .subscribe(response => {
-                console.log(response);
+              if (response.success === true) {
                 this.reset();
+              } else {
+                this.alertClass = 'danger';
+                this.alert = response.message;
+                this.login.password = null;
+              }
             },
             error => this.errorMessage = <any>error);
     }

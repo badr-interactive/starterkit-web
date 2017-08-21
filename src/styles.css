@@ -14,7 +14,7 @@ b, i,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figcaption, figure, 
+article, aside, canvas, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section, summary,
 time, mark, audio, video {
     font-family: 'Roboto', sans-serif;
@@ -25,5 +25,5 @@ body, html {
     margin: 0;
     padding: 0;
 
-    height: 100%;    
+    height: 100%;
 }

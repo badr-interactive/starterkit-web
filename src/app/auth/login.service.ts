@@ -1,9 +1,9 @@
-import { Injectable } from "@angular/core";
-import { HttpHeaders, HttpClient, HttpResponse } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { HttpHeaders, HttpClient, HttpResponse } from '@angular/common/http';
 
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
-import { Login } from "./login";
+import { Login } from './login';
 
 @Injectable()
 export class LoginService {
@@ -20,7 +20,7 @@ export class LoginService {
     }
 
     private extractData(res: Response) {
-        let body = res;
+        const body = res;
         return body || {};
     }
 
