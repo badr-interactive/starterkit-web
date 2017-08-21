@@ -5,36 +5,42 @@
         </div>
         <div class="box-content">
             <form (ngSubmit)="doLogin()" name="loginForm" #loginForm="ngForm">
-                <md-input-container class="example-full-width">
-                    <input type="email" 
-                    mdInput required 
-                    placeholder="Email" name="email" 
-                    #email="ngModel"
-                    [(ngModel)]="login.email" />
-                </md-input-container>
-                <div 
-                *ngIf="email.invalid"
-                class="alert alert-danger">
-                    <div *ngIf="email.errors.required">Email is required</div>
-                    <div *ngIf="email.errors.email">Email must be in valid email format</div>
+                <div class="form-group">
+                    <md-input-container class="example-full-width">
+                        <input type="email" 
+                        mdInput required 
+                        placeholder="Email" name="email" 
+                        #email="ngModel"
+                        [(ngModel)]="login.email"
+                        class="form-control"
+                        />
+                    </md-input-container>                
+                    <div 
+                    *ngIf="email.invalid && (email.dirty || email.touched)"
+                    class="alert alert-danger">
+                        <div *ngIf="email.errors.required">Email is required</div>
+                        <div *ngIf="email.errors.email">Email must be in valid email format</div>
+                    </div>
                 </div>
-                <md-input-container class="example-full-width">
-                    <input type="password" 
-                    mdInput required 
-                    placeholder="Password" name="password" 
-                    #password="ngModel"
-                    [(ngModel)]="login.password" />
-                </md-input-container>
-                <div 
-                *ngIf="password.invalid"
-                class="alert alert-danger">
-                    <div *ngIf="password.errors.required">Password is required</div>
+                <div class="form-group">
+                    <md-input-container class="example-full-width">
+                        <input type="password" 
+                        mdInput required 
+                        placeholder="Password" name="password" 
+                        #password="ngModel"
+                        [(ngModel)]="login.password" />
+                    </md-input-container>
+                    <div 
+                    *ngIf="password.invalid && (password.dirty || password.touched)"
+                    class="alert alert-danger">
+                        <div *ngIf="password.errors.required">Password is required</div>
+                    </div>
                 </div>
                 <div class="example-full-width">
                     <md-checkbox>
                         Remember me?
                     </md-checkbox>
-                    <button md-raised-button type="submit">
+                    <button md-raised-button type="submit" [disabled]="loginForm.invalid">
                         Login
                     </button>
                 </div>

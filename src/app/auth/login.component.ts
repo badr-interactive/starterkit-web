@@ -18,7 +18,6 @@ export class LoginComponent {
     }
 
     doLogin(): void {
-        console.log(this.login);
         this.loginService.postLogin(this.login)
             .subscribe(response => {
                 console.log(response);

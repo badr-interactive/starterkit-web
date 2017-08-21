@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Headers, Http, Response, RequestOptions } from "@angular/http";
+import { HttpHeaders, HttpClient, HttpResponse } from "@angular/common/http";
 
 import { Observable } from "rxjs";
 import 'rxjs/add/operator/map';
@@ -7,11 +7,11 @@ import { Login } from "./login";
 
 @Injectable()
 export class LoginService {
-    private headers = new Headers({'Content-Type': 'application/json'});
-    private options = new RequestOptions({headers: this.headers});
+    private headers = new HttpHeaders({'Content-Type': 'application/json'});
+    private options = {headers: this.headers};
     private url = 'https://private-301d1f-starterkit.apiary-mock.com/login';
 
-    constructor (private http: Http) {}
+    constructor (private http: HttpClient) {}
 
     postLogin(login: Login): Observable<Login> {
         return this.http.post(this.url, login, this.options)
@@ -20,7 +20,7 @@ export class LoginService {
     }
 
     private extractData(res: Response) {
-        let body = res.json();
+        let body = res;
         return body || {};
     }
 
