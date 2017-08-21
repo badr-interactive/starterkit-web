@@ -4,7 +4,7 @@
             <h3> {{title}} </h3>
         </div>
         <div class="box-content">
-            <form (ngSubmit)="doLogin()" name="loginForm" #loginForm="ngForm">
+            <form name="registerForm" #registerForm="ngForm">
                 <div class="alert alert-{{ alertClass }}" role="alert"
                   *ngIf="alert"
                 >
@@ -16,7 +16,7 @@
                         mdInput required
                         placeholder="Email" name="email"
                         #email="ngModel"
-                        [(ngModel)]="login.email"
+                        [(ngModel)]="register.email"
                         class="form-control"
                         />
                     </md-input-container>
@@ -33,7 +33,7 @@
                         mdInput required
                         placeholder="Password" name="password"
                         #password="ngModel"
-                        [(ngModel)]="login.password" />
+                        [(ngModel)]="register.password" />
                     </md-input-container>
                     <div
                     *ngIf="password.invalid && (password.dirty || password.touched)"
@@ -41,21 +41,28 @@
                         <div *ngIf="password.errors.required">Password is required</div>
                     </div>
                 </div>
+                <div class="form-group">
+                    <md-input-container class="example-full-width">
+                        <input type="password"
+                        mdInput required
+                        placeholder="Confirmation Password" name="confirmation_password"
+                        #confirmation_password="ngModel"
+                        [(ngModel)]="register.confirmation_password" />
+                    </md-input-container>
+                    <div
+                    *ngIf="confirmation_password.invalid && (confirmation_password.dirty || confirmation_password.touched)"
+                    class="alert alert-danger">
+                        <div *ngIf="confirmation_password.errors.required">Confirmation password is required</div>
+                    </div>
+                </div>
                 <div class="example-full-width">
-                    <md-checkbox>
-                        Remember me?
-                    </md-checkbox>
-                    <button md-raised-button type="submit" [disabled]="loginForm.invalid">
-                        Login
+                    <button md-raised-button type="submit" [disabled]="registerForm.invalid">
+                        Register
                     </button>
                 </div>
             </form>
             <div class="example-full-width">
-                Don't have account yet?
-                <br />
-                <a [routerLink]="['/register']">Register</a>
-                or
-                <a href="#">Forgot password</a>
+                <a [routerLink]="['/login']">Back to login</a>
             </div>
         </div>
     </div>

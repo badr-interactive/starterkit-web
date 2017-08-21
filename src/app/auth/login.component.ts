@@ -3,16 +3,16 @@ import { LoginService } from './login.service';
 import { Login } from './login';
 
 @Component({
-    selector: 'login',
+    selector: 'app-login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css'],
+    styleUrls: ['./login.component.css', '../layout/auth.component.css'],
     providers: [LoginService]
 })
 
 export class LoginComponent {
     public login: Login;
     @Input() public alerts: Array<string> = [];
-    title = 'Starterkit Login';
+    title = 'Login Form';
     alertClass = 'primary';
     alert: String;
     errorMessage: String;
