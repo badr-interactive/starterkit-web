@@ -24,6 +24,7 @@ export class LoginComponent {
     doLogin(): void {
         this.loginService.postLogin(this.login)
             .subscribe(response => {
+              console.log(response);
               if (response.success === true) {
                 this.reset();
               } else {

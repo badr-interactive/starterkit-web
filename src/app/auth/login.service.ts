@@ -7,9 +7,12 @@ import { Login } from './login';
 
 @Injectable()
 export class LoginService {
-    private headers = new HttpHeaders({'Content-Type': 'application/json'});
+    private headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
     private options = {headers: this.headers};
-    private url = 'https://private-301d1f-starterkit.apiary-mock.com/login';
+    // private url = 'https://private-301d1f-starterkit.apiary-mock.com/login';
+    private url = 'https://dev.badr.co.id/freedom/auth/login';
 
     constructor (private http: HttpClient) {}
 
