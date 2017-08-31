@@ -11,56 +11,55 @@
                   {{ alert }}
                 </div>
                 <div class="form-group">
-                    <md-input-container class="example-full-width">
-                        <input type="email"
-                        mdInput required
-                        placeholder="Email" name="email"
-                        #email="ngModel"
-                        [(ngModel)]="register.email"
-                        />
-                    </md-input-container>
+                    <label for="email">Email address</label>
+					<input type="email"
+						required
+						placeholder="Email" name="email"
+						#email="ngModel" [(ngModel)]="register.email"
+						class="form-control"
+					/>
                     <div
                     *ngIf="email.invalid && (email.dirty || email.touched)"
-                    class="alert alert-danger">
+                    class="invalid-feedback">
                         <div *ngIf="email.errors.required">Email is required</div>
                         <div *ngIf="email.errors.email">Email must be in valid email format</div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <md-input-container class="example-full-width">
-                        <input type="password"
-                        mdInput required
+                    <label for="password">Password</label>
+					<input type="password"
+                        required
                         placeholder="Password" name="password"
-                        #password="ngModel"
-                        [(ngModel)]="register.password" />
-                    </md-input-container>
+						#password="ngModel" [(ngModel)]="register.password"
+						class="form-control"
+						/>
                     <div
                     *ngIf="password.invalid && (password.dirty || password.touched)"
-                    class="alert alert-danger">
+                    class="invalid-feedback">
                         <div *ngIf="password.errors.required">Password is required</div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <md-input-container class="example-full-width">
-                        <input type="password"
-                        mdInput required
+                    <label for="password">Confirmation Password</label>
+					<input type="password"
+                        required
                         placeholder="Confirmation Password" name="confirmation_password"
-                        #confirmation_password="ngModel"
-                        [(ngModel)]="register.confirmation_password" />
-                    </md-input-container>
+						#confirmation_password="ngModel" [(ngModel)]="register.confirmation_password"
+						class="form-control"
+						/>
                     <div
                     *ngIf="confirmation_password.invalid && (confirmation_password.dirty || confirmation_password.touched)"
-                    class="alert alert-danger">
+                    class="invalid-feedback">
                         <div *ngIf="confirmation_password.errors.required">Confirmation password is required</div>
                     </div>
                 </div>
-                <div class="example-full-width">
-                    <button md-raised-button type="submit" [disabled]="registerForm.invalid">
+                <div>
+                    <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary">
                         Register
                     </button>
                 </div>
             </form>
-            <div class="example-full-width">
+            <div>
                 <a [routerLink]="['/login']">Back to login</a>
             </div>
         </div>

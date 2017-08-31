@@ -38,16 +38,20 @@
                         <div *ngIf="password.errors.required">Password is required</div>
                     </div>
                 </div>
-                <div class="example-full-width">
-                    <md-checkbox>
+                <div class="form-check">
+					<label for="remember_me" class="form-check-label">
+						<input type="checkbox" name="remember_me" id="remember_me" class="form-check-input" >
+						Remember Me
+					</label>
+                </div>
+                <div>
                         Remember me?
-                    </md-checkbox>
-                    <button md-raised-button type="submit" [disabled]="loginForm.invalid">
+                    <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">
                         Login
                     </button>
                 </div>
             </form>
-            <div class="example-full-width">
+            <div>
                 Don't have account yet?
                 <br />
                 <a [routerLink]="['/register']">Register</a>
