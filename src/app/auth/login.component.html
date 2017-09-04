@@ -13,11 +13,10 @@
                 <div class="form-group">
                     <label for="email">Email address</label>
                     <input type="email"
-                        required
-                        placeholder="Email" name="email"
-                        #email="ngModel" [(ngModel)]="login.email"
-                        class="form-control"
-                        />
+                            name="email" #email required placeholder="Email"
+                            [(ngModel)]="login.email"
+                            class="form-control {{ formValid }}"
+                            />
                     <div
                     *ngIf="email.invalid && (email.dirty || email.touched)"
                     class="invalid-feedback">
@@ -28,10 +27,10 @@
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password"
-                                  required
-                                  placeholder="Password" name="password"
-                      #password="ngModel" [(ngModel)]="login.password"
-                      class="form-control" />
+                                  name="password" #password required placeholder="Password"
+                                  [(ngModel)]="login.password"
+                                  class="form-control {{ formValid }}"
+                                  />
                     <div
                     *ngIf="password.invalid && (password.dirty || password.touched)"
                     class="invalid-feedback">

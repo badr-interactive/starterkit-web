@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdInputModule, MdButtonModule, MdCheckboxModule, MdProgressBarModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 
 import 'hammerjs';
@@ -26,10 +25,7 @@ import { BaseMiddleware } from './middleware/base.middleware';
     FormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    HttpClientModule,
-    MdInputModule,
-    MdButtonModule, MdCheckboxModule,
-    MdProgressBarModule
+    HttpClientModule
   ],
   bootstrap: [AppComponent]
 })

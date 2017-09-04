@@ -16,6 +16,7 @@ export class LoginComponent {
     alertClass = 'primary';
     alert: String;
     errorMessage: String;
+    formValid: String;
 
     constructor (private loginService: LoginService) {
         this.login = new Login();
@@ -24,16 +25,17 @@ export class LoginComponent {
     doLogin(): void {
         this.loginService.postLogin(this.login)
             .subscribe(response => {
-              console.log(response);
-              if (response.success === true) {
-                this.reset();
-              } else {
-                this.alertClass = 'danger';
-                this.alert = response.message;
-                this.login.password = null;
-              }
+                if (response.success === true) {
+                    this.reset();
+                    this.formValid = 'is-valid';
+                }
             },
-            error => this.errorMessage = <any>error);
+            error => {
+              this.formValid = 'is-invalid';
+              this.alertClass = 'danger';
+              this.alert = error.error.message;
+              this.login.password = null;
+            });
     }
 
     private reset() {
