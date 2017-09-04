@@ -11,11 +11,9 @@ import { Login } from './login';
 
 export class LoginComponent {
     public login: Login;
-    @Input() public alerts: Array<string> = [];
     title = 'Login Form';
     alertClass = 'primary';
     alert: String;
-    errorMessage: String;
     formValid: String;
 
     constructor (private loginService: LoginService) {

@@ -4,7 +4,7 @@
             <h3> {{title}} </h3>
         </div>
         <div class="box-content">
-            <form (ngSubmit)="doLogin()" name="loginForm" #loginForm="ngForm">
+            <form (submit)="doLogin()" name="loginForm" #loginForm="ngForm">
                 <div class="alert alert-{{ alertClass }}" role="alert"
                   *ngIf="alert"
                 >

@@ -28,6 +28,6 @@ body, html {
     height: 100%;
 }
 
-a, button {
+a, button:not(:disabled) {
   cursor: pointer;
 }

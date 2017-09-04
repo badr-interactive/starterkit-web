@@ -4,7 +4,7 @@
             <h3> {{title}} </h3>
         </div>
         <div class="box-content">
-            <form name="registerForm" #registerForm="ngForm">
+            <form name="registerForm" #registerForm="ngForm" (submit)="doRegister()" >
                 <div class="alert alert-{{ alertClass }}" role="alert"
                   *ngIf="alert"
                 >
@@ -15,8 +15,8 @@
 					<input type="email"
 						required
 						placeholder="Email" name="email"
-						#email="ngModel" [(ngModel)]="register.email"
-						class="form-control"
+						#email [(ngModel)]="register.email"
+						class="form-control {{ formValid }}"
 					/>
                     <div
                     *ngIf="email.invalid && (email.dirty || email.touched)"
@@ -30,13 +30,14 @@
 					<input type="password"
                         required
                         placeholder="Password" name="password"
-						#password="ngModel" [(ngModel)]="register.password"
-						class="form-control"
+						#password [(ngModel)]="register.password"
+						class="form-control {{ formValid }}"
 						/>
                     <div
                     *ngIf="password.invalid && (password.dirty || password.touched)"
                     class="invalid-feedback">
                         <div *ngIf="password.errors.required">Password is required</div>
+                        <div *ngIf="confirmation_password.errors.required">Confirmation password is required</div>
                     </div>
                 </div>
                 <div class="form-group">
@@ -44,12 +45,13 @@
 					<input type="password"
                         required
                         placeholder="Confirmation Password" name="confirmation_password"
-						#confirmation_password="ngModel" [(ngModel)]="register.confirmation_password"
-						class="form-control"
+						#confirmation_password [(ngModel)]="register.confirmation_password"
+						class="form-control {{ formValid }}"
 						/>
                     <div
                     *ngIf="confirmation_password.invalid && (confirmation_password.dirty || confirmation_password.touched)"
                     class="invalid-feedback">
+                        <div *ngIf="password.errors.required">Password is required</div>
                         <div *ngIf="confirmation_password.errors.required">Confirmation password is required</div>
                     </div>
                 </div>

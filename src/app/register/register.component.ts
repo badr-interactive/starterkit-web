@@ -1,12 +1,12 @@
 import { Component, Input } from '@angular/core';
-
+import { RegisterService } from './register.service';
 import { Register } from './register';
 
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.css', '../layout/auth.component.css'],
-    // providers: [RegisterService]
+    providers: [RegisterService]
 })
 
 export class RegisterComponent {
@@ -15,28 +15,34 @@ export class RegisterComponent {
     title = 'Register Form';
     alertClass = 'primary';
     alert: String;
-    errorMessage: String;
+    formValid: String;
 
-    constructor () {
+    constructor (private RegisterService: RegisterService) {
         this.register = new Register();
     }
 
-    // doLogin(): void {
-    //     this.loginService.postLogin(this.login)
-    //         .subscribe(response => {
-    //           if (response.success === true) {
-    //             this.reset();
-    //           } else {
-    //             this.alertClass = 'danger';
-    //             this.alert = response.message;
-    //             this.login.password = null;
-    //           }
-    //         },
-    //         error => this.errorMessage = <any>error);
-    // }
+    doRegister(): void {
+      this.RegisterService.postLogin(this.register)
+          .subscribe(response => {
+              if (response.success === true) {
+                this.reset();
+                this.formValid = 'is-valid';
+                this.alertClass = 'success';
+                this.alert = response.message;
+              }
+          },
+          error => {
+            this.formValid = 'is-invalid';
+            this.alertClass = 'danger';
+            this.alert = error.error.message;
+            this.register.password = null;
+            this.register.confirmation_password = null;
+          });
+  }
 
-    private reset() {
-        // this.login.email = null;
-        // this.login.password = null;
-    }
+  private reset() {
+      this.register.email = null;
+      this.register.password = null;
+      this.register.confirmation_password = null;
+  }
 }
