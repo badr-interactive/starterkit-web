@@ -10,15 +10,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { LoginComponent } from './auth/login/login.component';
+import { GoogleLoginComponent } from './auth/login/login.google.component';
+
 import { RegisterComponent } from './auth/register/register.component';
 
 import { BaseMiddleware } from './middleware/base.middleware';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    GoogleLoginComponent
   ],
   imports: [
     BrowserModule,

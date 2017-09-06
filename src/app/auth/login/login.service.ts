@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpResponse } from '@angular/common/http';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
@@ -14,7 +15,7 @@ export class LoginService {
     // private url = 'https://private-301d1f-starterkit.apiary-mock.com/login';
     private url = 'https://dev.badr.co.id/freedom/auth/login';
 
-    constructor (private http: HttpClient) {}
+    constructor (private http: HttpClient, private sanitizer: DomSanitizer) {}
 
     postLogin(login: Login): Observable<Login> {
         return this.http.post(this.url, login, this.options)
