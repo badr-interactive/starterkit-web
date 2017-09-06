@@ -8,7 +8,7 @@ declare const gapi: any;
   template: '<div id="my-signin2"></div>'
 })
 
-export class GoogleLoginComponent implements AfterViewInit {
+export class LoginGoogleComponent implements AfterViewInit {
   private googleApiId = '242838104151-uq8hka2i0f0p2cpon74v2urtg7nm8d66.apps.googleusercontent.com';
   private scope = [
     'profile',
@@ -21,15 +21,6 @@ export class GoogleLoginComponent implements AfterViewInit {
     });
   }
 
-  public onSignIn(googleUser) {
-    const profile = googleUser.getBasicProfile();
-    console.log('Token || ' + googleUser.getAuthResponse().id_token);
-    console.log('ID: ' + profile.getId());
-    console.log('Name: ' + profile.getName());
-    console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail());
-  }
-
   ngAfterViewInit() {
     gapi.signin2.render('my-signin2', {
       scope: 'profile email',
@@ -37,7 +28,21 @@ export class GoogleLoginComponent implements AfterViewInit {
       height: 50,
       longtitle: true,
       theme: 'light',
-      onsuccess: param => this.onSignIn(param)
+      onsuccess: param => this.login(param)
     });
+  }
+
+  login(googleUser) {
+    const profile = googleUser.getBasicProfile();
+    console.log('Google : ' + profile.getName());
+    // console.log('Token || ' + googleUser.getAuthResponse().id_token);
+    // console.log('ID: ' + profile.getId());
+    // console.log('Name: ' + profile.getName());
+    // console.log('Image URL: ' + profile.getImageUrl());
+    // console.log('Email: ' + profile.getEmail());
+  }
+
+  logout(googleUser) {
+    googleUser.disconnect();
   }
 }

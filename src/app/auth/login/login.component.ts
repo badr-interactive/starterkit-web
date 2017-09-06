@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { LoginService } from './login.service';
-import { Login } from './login';
-import { GoogleLoginComponent } from './login.google.component';
-import { FacebookLoginComponent } from './login.facebook.component';
+import { LoginSocialService } from './login.social.service';
+import { Login, LoginSocial } from './login';
+import { LoginGoogleComponent } from './login.google.component';
+import { LoginFacebookComponent } from './login.facebook.component';
 
 @Component({
     selector: 'app-login',
@@ -13,6 +14,7 @@ import { FacebookLoginComponent } from './login.facebook.component';
 
 export class LoginComponent {
     public login: Login;
+    public loginSocial: LoginSocial;
 
     title = 'Login Form';
     alertClass = 'primary';
@@ -21,6 +23,7 @@ export class LoginComponent {
 
     constructor (private loginService: LoginService) {
         this.login = new Login();
+        this.loginSocial = new LoginSocial();
     }
 
     doLogin(): void {
