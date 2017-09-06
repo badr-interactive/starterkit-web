@@ -9,7 +9,6 @@ declare const gapi: any;
 })
 
 export class GoogleLoginComponent implements AfterViewInit {
-  public auth2: any;
   private googleApiId = '242838104151-uq8hka2i0f0p2cpon74v2urtg7nm8d66.apps.googleusercontent.com';
   private scope = [
     'profile',

@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 
 import { LoginComponent } from './auth/login/login.component';
 import { GoogleLoginComponent } from './auth/login/login.google.component';
+import { FacebookLoginComponent } from './auth/login/login.facebook.component';
 
 import { RegisterComponent } from './auth/register/register.component';
 
@@ -22,7 +23,8 @@ import { BaseMiddleware } from './middleware/base.middleware';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    GoogleLoginComponent
+    GoogleLoginComponent,
+    FacebookLoginComponent
   ],
   imports: [
     BrowserModule,

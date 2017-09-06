@@ -2,9 +2,7 @@ import { Component, Input } from '@angular/core';
 import { LoginService } from './login.service';
 import { Login } from './login';
 import { GoogleLoginComponent } from './login.google.component';
-
-declare var window: any;
-declare var FB: any;
+import { FacebookLoginComponent } from './login.facebook.component';
 
 @Component({
     selector: 'app-login',
@@ -16,9 +14,6 @@ declare var FB: any;
 export class LoginComponent {
     public login: Login;
 
-    private facebookApiId = '106034073373462';
-    private facebookApiVersion = 'v2.9';
-
     title = 'Login Form';
     alertClass = 'primary';
     alert: String;
@@ -26,25 +21,6 @@ export class LoginComponent {
 
     constructor (private loginService: LoginService) {
         this.login = new Login();
-
-        (function(d, s, id){
-          let js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) {return; }
-          js = d.createElement(s); js.id = id;
-          js.src = '//connect.facebook.net/en_US/sdk.js';
-          fjs.parentNode.insertBefore(js, fjs);
-          }(document, 'script', 'facebook-jssdk'));
-          window.fbAsyncInit = () => {
-            console.log('fbasyncinit');
-
-            FB.init({
-                appId            : this.facebookApiId,
-                version          : this.facebookApiVersion,
-                autoLogAppEvents : true,
-                xfbml            : true,
-            });
-            FB.AppEvents.logPageView();
-          };
     }
 
     doLogin(): void {
