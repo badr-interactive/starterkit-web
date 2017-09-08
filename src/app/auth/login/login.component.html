@@ -50,9 +50,8 @@
                 </div>
             </form>
             <div class="social-login">
-              <app-google-login></app-google-login>
-              <br>
-              <app-facebook-login></app-facebook-login>
+              <button class="btn btn-primary btn-social-icon btn-google" (click)="signInWithGoogle()"><span class="fa fa-google"></span></button>
+              <button class="btn btn-primary btn-social-icon btn-facebook" (click)="signInWithFB()"><span class="fa fa-facebook"></span></button>
             </div>
             <div>
                 Don't have account yet?

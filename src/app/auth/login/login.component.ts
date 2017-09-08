@@ -2,8 +2,9 @@ import { Component, Input } from '@angular/core';
 import { LoginService } from './login.service';
 import { LoginSocialService } from './login.social.service';
 import { Login, LoginSocial } from './login';
-import { LoginGoogleComponent } from './login.google.component';
-import { LoginFacebookComponent } from './login.facebook.component';
+
+import { AuthService, SocialUser } from 'angular4-social-login';
+import { FacebookLoginProvider, GoogleLoginProvider } from 'angular4-social-login';
 
 @Component({
     selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginComponent {
     alert: String;
     formValid: String;
 
-    constructor (private loginService: LoginService) {
+    constructor (private loginService: LoginService,
+      private authService: AuthService) {
         this.login = new Login();
         this.loginSocial = new LoginSocial();
     }
@@ -40,6 +42,18 @@ export class LoginComponent {
               this.alert = error.error.message;
               this.login.password = null;
             });
+    }
+
+    signInWithGoogle(): void {
+      this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    }
+
+    signInWithFB(): void {
+      this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+    }
+
+    signOut(): void {
+      this.authService.signOut();
     }
 
     private reset() {
