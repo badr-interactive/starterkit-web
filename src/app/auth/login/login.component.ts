@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { LoginService } from './login.service';
 import { LoginSocialService } from './login.social.service';
+import { QuoteService } from '../../quote/quote.service';
+import { Quote } from '../../quote/quote';
 import { Login, LoginSocial } from './login';
 
 import { AuthService, SocialUser } from 'angular4-social-login';
@@ -10,21 +12,27 @@ import { FacebookLoginProvider, GoogleLoginProvider } from 'angular4-social-logi
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css', '../../layout/auth.component.css'],
-    providers: [LoginService]
+    providers: [LoginService, QuoteService]
 })
 
 export class LoginComponent {
     public login: Login;
     public loginSocial: LoginSocial;
+    public quote: Quote;
 
     alertClass = 'primary';
     alert: String;
-    formValid: String;
+    formValidation: String;
+    quoteList: object;
 
     constructor (private loginService: LoginService,
-      private authService: AuthService) {
+      private authService: AuthService,
+      private quoteService: QuoteService) {
         this.login = new Login();
         this.loginSocial = new LoginSocial();
+        this.quote = new Quote();
+
+        this.getQuote();
     }
 
     doLogin(): void {
@@ -32,11 +40,11 @@ export class LoginComponent {
             .subscribe(response => {
                 if (response.success === true) {
                     this.reset();
-                    this.formValid = 'is-valid';
+                    this.formValidation = 'is-valid';
                 }
             },
             error => {
-              this.formValid = 'is-invalid';
+              this.formValidation = 'is-invalid';
               this.alertClass = 'danger';
               this.alert = error.error.message;
               this.login.password = null;
@@ -53,6 +61,13 @@ export class LoginComponent {
 
     signOut(): void {
       this.authService.signOut();
+    }
+
+    getQuote(): void {
+      this.quoteService.getQuote(this.quote)
+                        .subscribe(response => {
+                          this.quote = response[0];
+                        });
     }
 
     private reset() {

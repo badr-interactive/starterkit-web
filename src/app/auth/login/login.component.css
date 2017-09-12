@@ -2,3 +2,8 @@
   margin-bottom: 15px;
   margin-top: 15px;
 }
+
+.quote-caption p, span {
+  font-size: 1.2rem;
+  color: #ffffff;
+}
