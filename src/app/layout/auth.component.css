@@ -37,3 +37,8 @@
 .box-auth .box-content {
   padding: 20px;
 }
+
+.quote-caption p, span {
+  font-size: 1.2rem;
+  color: #ffffff;
+}
