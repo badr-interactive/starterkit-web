@@ -22,8 +22,6 @@ export class LoginComponent {
 
     alertClass = 'primary';
     alert: String;
-    formValidation: String;
-    quoteList: object;
 
     constructor (private loginService: LoginService,
       private authService: AuthService,
@@ -40,11 +38,11 @@ export class LoginComponent {
             .subscribe(response => {
                 if (response.success === true) {
                     this.reset();
-                    this.formValidation = 'is-valid';
+                    this.alertClass = 'success';
+                    this.alert = response.message;
                 }
             },
             error => {
-              this.formValidation = 'is-invalid';
               this.alertClass = 'danger';
               this.alert = error.error.message;
               this.login.password = null;

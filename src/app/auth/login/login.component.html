@@ -26,10 +26,11 @@
           <div class="alert alert-{{ alertClass }}" role="alert"
             *ngIf="alert"
           >
+            {{ alert }}
           </div>
           <form class="margin-bottom-0" (ngSubmit)="doLogin()" name="loginForm" #loginForm="ngForm">
               <div class="form-group m-b-15">
-                  <input type="text" class="form-control {{formValidation}} input-lg"
+                  <input type="text" class="form-control input-lg"
                   name="email" #email required placeholder="Email"
                   [(ngModel)]="login.email" />
 
@@ -41,7 +42,7 @@
                   </div>
               </div>
               <div class="form-group m-b-15">
-                  <input type="password" class="form-control {{formValidation}} input-lg"
+                  <input type="password" class="form-control input-lg"
                   name="password" #password required placeholder="Password"
                   [(ngModel)]="login.password" />
 
@@ -54,14 +55,19 @@
               <div class="login-buttons">
                   <button type="submit" class="btn btn-success btn-block btn-lg" [disabled]="loginForm.invalid">Login</button>
               </div>
+          </form>
+            <div class="text-center or-social">or</div>
+              <div class="text-center">
+                <button class="btn btn-primary btn-social-icon btn-google" (click)="signInWithGoogle()"><span class="fa fa-google"></span></button>
+                <button class="btn btn-primary btn-social-icon btn-facebook" (click)="signInWithFB()"><span class="fa fa-facebook"></span></button>
+              </div>
               <div class="m-t-20 m-b-40 p-b-40 text-inverse">
-                  Click <a href="register_v3.html" class="text-success">here</a> to register.
+                  Don't have account yet? Click <a [routerLink]="['/register']">here</a> to register.
               </div>
               <hr />
               <p class="text-center">
                   &copy; Powered by <a href="http://badr.co.id">Badr Interactive</a>
               </p>
-          </form>
       </div>
       <!-- end login-content -->
   </div>
