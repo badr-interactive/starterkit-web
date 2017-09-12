@@ -23,12 +23,10 @@ export class RegisterService {
     }
 
     private extractData(res: Response) {
-        const body = res;
-        return body || {};
+        return res || {};
     }
 
     private handleError(error: Response | any) {
-        console.error(error.message || error);
         return Observable.throw(error);
     }
 }
