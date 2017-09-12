@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
 import { LoginService } from './login.service';
 import { LoginSocialService } from './login.social.service';
 import { QuoteService } from '../../quote/quote.service';
@@ -12,7 +14,7 @@ import { FacebookLoginProvider, GoogleLoginProvider } from 'angular4-social-logi
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css', '../../layout/auth.component.css'],
-    providers: [LoginService, QuoteService]
+    providers: [LoginService, LoginSocialService, QuoteService]
 })
 
 export class LoginComponent {
@@ -22,8 +24,13 @@ export class LoginComponent {
 
     alertClass = 'primary';
     alert: String;
+    returnUrl: string;
 
-    constructor (private loginService: LoginService,
+    constructor (
+      private route: ActivatedRoute,
+      private router: Router,
+      private loginService: LoginService,
+      private loginSocialService: LoginSocialService,
       private authService: AuthService,
       private quoteService: QuoteService) {
         this.login = new Login();
@@ -31,6 +38,8 @@ export class LoginComponent {
         this.quote = new Quote();
 
         this.getQuote();
+        this.logout();
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
     doLogin(): void {
@@ -40,6 +49,9 @@ export class LoginComponent {
                     this.reset();
                     this.alertClass = 'success';
                     this.alert = response.message;
+                    localStorage.setItem('access_token', response.data.access_token);
+
+                    this.router.navigate([this.returnUrl]);
                 }
             },
             error => {
@@ -49,12 +61,30 @@ export class LoginComponent {
             });
     }
 
+    doLoginSocial(loginSocial: LoginSocial): void {
+      this.loginSocialService.postLogin(loginSocial)
+      .subscribe(response => {
+          if (response.success === true) {
+              this.reset();
+              this.alertClass = 'success';
+              this.alert = response.message;
+          }
+      },
+      error => {
+        this.alertClass = 'danger';
+        this.alert = error.error.message;
+        this.login.password = null;
+      });
+    }
+
     signInWithGoogle(): void {
       this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+      this.doLoginSocial(this.loginSocial);
     }
 
     signInWithFB(): void {
       this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+      this.doLoginSocial(this.loginSocial);
     }
 
     signOut(): void {
@@ -66,6 +96,10 @@ export class LoginComponent {
                         .subscribe(response => {
                           this.quote = response[0];
                         });
+    }
+
+    logout () {
+      localStorage.removeItem('access_token');
     }
 
     private reset() {

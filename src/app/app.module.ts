@@ -11,12 +11,16 @@ import 'hammerjs';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppService } from './app.service';
+import { AuthGuard } from './_guards/auth.guard';
 
 import { LoginComponent } from './auth/login/login.component';
-
 import { RegisterComponent } from './auth/register/register.component';
 
 import { BaseMiddleware } from './middleware/base.middleware';
+import { HeaderComponent } from './layout/header/header.component';
+import { FooterComponent } from './layout/footer/footer.component';
+import { SidebarComponent } from './layout/sidebar/sidebar.component';
+import { HomeComponent } from './home/home.component';
 
 const config = new AuthServiceConfig([
   {
@@ -37,7 +41,11 @@ export function provideConfig() {
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HeaderComponent,
+    FooterComponent,
+    SidebarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +56,7 @@ export function provideConfig() {
     SocialLoginModule.initialize(config)
   ],
   bootstrap: [AppComponent],
-  providers: [{
+  providers: [AuthGuard, {
     provide: AuthServiceConfig,
     useFactory: provideConfig
   }, AppService]

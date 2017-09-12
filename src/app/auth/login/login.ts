@@ -6,7 +6,13 @@ export class Login {
     fcm_token: string;
 
     success: boolean;
-    data: object;
+    data: {
+      access_token: string,
+      email: string,
+      id: string,
+      name: string,
+      photo: string
+    };
     message: string;
 }
 
@@ -19,7 +25,13 @@ export class LoginSocial {
   fcm_token: string;
 
   success: boolean;
-  data: object;
+  data: {
+    access_token: string,
+    email: string,
+    id: string,
+    name: string,
+    photo: string
+  };
   message: string;
 }
 
