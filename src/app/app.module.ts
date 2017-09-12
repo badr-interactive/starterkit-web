@@ -10,6 +10,7 @@ import 'hammerjs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AppService } from './app.service';
 
 import { LoginComponent } from './auth/login/login.component';
 
@@ -50,6 +51,6 @@ export function provideConfig() {
   providers: [{
     provide: AuthServiceConfig,
     useFactory: provideConfig
-  }]
+  }, AppService]
 })
 export class AppModule { }

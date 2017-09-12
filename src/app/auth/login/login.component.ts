@@ -17,7 +17,6 @@ export class LoginComponent {
     public login: Login;
     public loginSocial: LoginSocial;
 
-    title = 'Login Form';
     alertClass = 'primary';
     alert: String;
     formValid: String;

@@ -21,12 +21,18 @@
       "styles": [
         "styles.css",
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-        "../node_modules/font-awesome/css/font-awesome.min.css"
+        "../node_modules/font-awesome/css/font-awesome.min.css",
+        "./assets/css/animate.min.css",
+        "./assets/css/style-bs4.min.css",
+        "./assets/css/style.min.css",
+        "./assets/css/style-responsive.min.css",
+        "./assets/css/default.css"
       ],
       "scripts": [
         "../node_modules/popper.js/dist/umd/popper.min.js",
         "../node_modules/jquery/dist/jquery.slim.min.js",
-        "../node_modules/bootstrap/dist/js/bootstrap.min.js"
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+        "../node_modules/jquery-slimscroll/jquery.slimscroll.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
