@@ -18,26 +18,31 @@
 		<!-- begin sidebar nav -->
 		<ul class="nav">
 			<li class="nav-header">Navigation</li>
+      <li><a [routerLink]="['/']">Dashboard</a></li>
 			<li class="has-sub active">
 				<a href="javascript:;">
 				    <b class="caret pull-right"></b>
 				    <i class="fa fa-laptop"></i>
-				    <span>Dashboard</span>
+				    <span>User Management</span>
 			    </a>
 				<ul class="sub-menu">
-				    <li><a href="index.html">Dashboard v1</a></li>
-				    <li class="active"><a href="index_v2.html">Dashboard v2</a></li>
+				    <li><a href="index.html">User Settings</a></li>
+				    <li><a href="index.html">User Role Settings</a></li>
+				    <li><a href="index.html">User Permission Settings</a></li>
 				</ul>
 			</li>
-			<li>
-				<a href="bootstrap_4.html">
-					<div class="icon-img">
-				    	<img src="assets/img/bs4-logo.png" alt="" />
-				    </div>
-				    <span>Bootstrap 4 <span class="label label-theme m-l-5">NEW</span></span>
-				</a>
+			<li class="has-sub">
+				<a href="javascript:;">
+				    <b class="caret pull-right"></b>
+				    <i class="fa fa-laptop"></i>
+				    <span>Settings</span>
+			    </a>
+          <ul class="sub-menu">
+              <li><a href="index.html">Application Settings</a></li>
+              <li class="active"><a href="index_v2.html">System Settings</a></li>
+          </ul>
 			</li>
-	        <!-- begin sidebar minify button -->
+	    <!-- begin sidebar minify button -->
 			<li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
 	        <!-- end sidebar minify button -->
 		</ul>
