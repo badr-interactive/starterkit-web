@@ -7,11 +7,14 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit  {
+  user_name = localStorage.getItem('name');
+  user_email = localStorage.getItem('email');
+  user_photo = localStorage.getItem('photo');
   returnUrl: string;
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
+    private router: Router
   ) {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/login';
   }
@@ -21,6 +24,9 @@ export class HeaderComponent implements OnInit  {
 
   logout () {
     localStorage.removeItem('access_token');
+    localStorage.removeItem('email');
+    localStorage.removeItem('name');
+    localStorage.removeItem('photo');
     window.location.href = this.returnUrl;
   }
 }

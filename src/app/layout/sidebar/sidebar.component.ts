@@ -6,8 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-
-  constructor() { }
+  user_name = localStorage.getItem('name');
+  user_email = localStorage.getItem('email');
+  user_photo = localStorage.getItem('photo');
+  constructor() {
+  }
 
   ngOnInit() {
   }

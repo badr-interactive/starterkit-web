@@ -50,6 +50,9 @@ export class LoginComponent {
                     this.alertClass = 'success';
                     this.alert = response.message;
                     localStorage.setItem('access_token', response.data.access_token);
+                    localStorage.setItem('email', response.data.email);
+                    localStorage.setItem('name', response.data.name);
+                    localStorage.setItem('photo', response.data.photo);
 
                     window.location.href = this.returnUrl;
                     // this.router.navigate([this.returnUrl]);
