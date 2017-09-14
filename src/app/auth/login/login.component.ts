@@ -51,7 +51,8 @@ export class LoginComponent {
                     this.alert = response.message;
                     localStorage.setItem('access_token', response.data.access_token);
 
-                    this.router.navigate([this.returnUrl]);
+                    window.location.href = this.returnUrl;
+                    // this.router.navigate([this.returnUrl]);
                 }
             },
             error => {
