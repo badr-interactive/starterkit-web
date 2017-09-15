@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit  {
   }
 
   logout () {
-    localStorage.removeItem('access_token');
+    localStorage.removeItem('token');
     localStorage.removeItem('email');
     localStorage.removeItem('name');
     localStorage.removeItem('photo');

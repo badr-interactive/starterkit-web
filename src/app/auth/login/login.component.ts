@@ -49,7 +49,7 @@ export class LoginComponent {
                     this.reset();
                     this.alertClass = 'success';
                     this.alert = response.message;
-                    localStorage.setItem('access_token', response.data.access_token);
+                    localStorage.setItem('token', response.data.access_token);
                     localStorage.setItem('email', response.data.email);
                     localStorage.setItem('name', response.data.name);
                     localStorage.setItem('photo', response.data.photo);
