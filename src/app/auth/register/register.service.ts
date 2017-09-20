@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpResponse } from '@angular/common/http';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { Register } from './register';
 
@@ -23,12 +23,10 @@ export class RegisterService {
     }
 
     private extractData(res: Response) {
-        const body = res;
-        return body || {};
+        return res || {};
     }
 
     private handleError(error: Response | any) {
-        console.error(error.message || error);
         return Observable.throw(error);
     }
 }
