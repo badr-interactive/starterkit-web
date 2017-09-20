@@ -19,13 +19,28 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css",
-        "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+        "./assets/plugins/jquery-ui/jquery-ui.min.css",
+        "./assets/plugins/tether/css/tether.min.css",
+        "./assets/css/bootstrap.min.css",
+        "./assets/css/font-awesome.min.css",
+        "./assets/css/animate.min.css",
+        "./assets/css/style-bs4.min.css",
+        "./assets/css/style.min.css",
+        "./assets/css/style-responsive.min.css",
+        "./assets/css/default.css",
+        "styles.css"
       ],
       "scripts": [
-        "../node_modules/popper.js/dist/umd/popper.min.js",
-        "../node_modules/jquery/dist/jquery.slim.min.js",
-        "../node_modules/bootstrap/dist/js/bootstrap.min.js"
+        "./assets/plugins/pace/pace.min.js",
+        "./assets/js/popper.min.js",
+        "./assets/plugins/tether/js/tether.min.js",
+        "./assets/js/jquery-3.2.1.min.js",
+        "./assets/js/jquery-migrate-3.0.0.min.js",
+        "./assets/plugins/jquery-ui/jquery-ui.min.js",
+        "./assets/js/bootstrap.min.js",
+        "./assets/js/jquery.slimscroll.min.js",
+        "./assets/js/apps.min.js",
+        "scripts.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
